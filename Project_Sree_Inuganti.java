@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 public class Project_Sree_Inuganti {
    public static void main(String[] args) {
-   ArrayList<Policy> policies = new ArrayList<>();
+       ArrayList<Policy> policies = new ArrayList<>();
+       int smokers = 0;
+       int nonSmokers = 0;
    
    //Read policies from file
    try {
@@ -26,15 +28,23 @@ public class Project_Sree_Inuganti {
             //Create Policy object and add to ArrayList
             Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
             policies.add(policy);
+        
+            
+            //Count smokers and non-smokers
+            if (smokingStatus.equals("smoker")) {
+               smokers++;
+            } else {
+               nonSmokers++;
+            }
         }
         
         fileScanner.close();
       } catch (FileNotFoundException e) {
           System.out.println("File not found: " + e.getMessage());
       }
+      
    //Display info about policy
    for (Policy policy :  policies) {
-   
        System.out.println("Policy Number: " + policy.getPolicyNumber());
        System.out.println("Provider Name: " + policy.getProviderName());
        System.out.println("Policyholder's Name: " + policy.getFirstName() + " " + policy.getLastName());
@@ -44,7 +54,11 @@ public class Project_Sree_Inuganti {
        System.out.println("Policyholder's Weight: " + String.format("%.2f", policy.getWeight()) + " pounds");
        System.out.println("Policyholder's BMI: " + String.format("%.2f", policy.calculateBMI()));
        System.out.println("Policy Price: $" + String.format("%.2f", policy.calculateInsurancePrice()));
-      
+       System.out.println();
+       
        }
+       
+       System.out.println("The number of policies with a smoker is: " + smokers);
+       System.out.println("The number of policies with a non-smoker is: " + nonSmokers);
     }
 }
