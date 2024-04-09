@@ -71,7 +71,7 @@ public class Policy {
       if (policyHolder.getAge() > 50) {
          additionalFee +=75;
       }
-      if (policyHolder.getsmokingStatus().equals("smoker")) {
+      if (policyHolder.getSmokingStatus().equals("smoker")) {
          additionalFee +=100;
       }
       double bmi = policyHolder.calculateBMI();
