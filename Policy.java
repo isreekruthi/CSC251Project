@@ -61,6 +61,16 @@ public class Policy {
    }
 
    /**
+    * Returns a string representation of the Policy object.
+    *
+    * @return String representation of the Policy object
+    */
+    @Override
+    public String toString() {
+      return "Policy Number: " + policyNumber + "\nProvider Name: " + providerName;
+    }
+ 
+   /**
     * Calculates the insurance price based on the policyholder's attributes.
     * 
     * @return the insurance price
