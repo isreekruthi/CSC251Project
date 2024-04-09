@@ -2,8 +2,10 @@
  * This code represents an insurance policy.
  */
 public class Policy {
+   private static int numberOfPolicies = 0;
    private String policyNumber;
    private String providerName;
+   private PolicyHolder policyHolder; // Reference to a PolicyHolder
    
    /**
     * No-arg constructor and default values
@@ -11,6 +13,8 @@ public class Policy {
    public Policy() {
       this.policyNumber = "";
       this.providerName = "";
+      this.policyHolder = new PolicyHolder();
+      numberOfPolicies++;
    }
    
    /**
@@ -18,10 +22,13 @@ public class Policy {
     *
     *@param policyNumber The policy number.
     *@param providerName The name of the insurance provider.
+    *@param policyHolder The PolicyHolder associated with this policy.
     */
-   public Policy(String policyNumber, String providerName) {
+   public Policy(String policyNumber, String providerName, PolicyHolder policyHolder) {
       this.policyNumber = policyNumber;
       this.providerName = providerName;
+      this.policyHolder = policyHolder;
+      numberOfPolicies++;
    }
    
    /**
@@ -59,6 +66,24 @@ public class Policy {
    public void setProviderName(String providerName) {
       this.providerName = providerName;
    }
+   
+   /**
+    * Gets the policy holder associated with this policy
+    *
+    * @return the policy holder
+    */
+   public PolicyHolder getPolicyHolder() {
+      return policyHolder;
+   }
+   
+   /**
+    *Sets the policy holder associated with this policy
+    *
+    * @param policyHolder the policyholder to set
+    */
+   public void setPolicyHolder(PolicyHolder policyHolder) {
+      this.policyHolder = policyHolder;
+   }
 
    /**
     * Returns a string representation of the Policy object.
@@ -67,7 +92,7 @@ public class Policy {
     */
     @Override
     public String toString() {
-      return "Policy Number: " + policyNumber + "\nProvider Name: " + providerName;
+      return "Policy Number: " + policyNumber + "\nProvider Name: " + providerName + "\nPolicyHolder: " + policyHolder.toString();
     }
  
    /**
@@ -89,5 +114,13 @@ public class Policy {
          additionalFee += (bmi - 35) * 20;
       }
       return baseFee + additionalFee;
+   }
+    /**
+     * Gets the number of Policy objects created.
+     *
+     * @return The number of Policy objects created.
+     */
+    public static int getNumberOfPolicies() {
+       return numberOfPolicies;
    }
 }

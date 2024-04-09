@@ -26,7 +26,8 @@ public class Project_Sree_Inuganti {
             double weight = Double.parseDouble(fileScanner.nextLine());
             
             //Create Policy object and add to ArrayList
-            Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+            PolicyHolder policyHolder = new PolicyHolder(firstName, lastName, age, smokingStatus, height, weight);
+            Policy policy = new Policy(policyNumber, providerName,policyHolder);
             policies.add(policy);
         
             
@@ -45,20 +46,13 @@ public class Project_Sree_Inuganti {
       
    //Display info about policy
    for (Policy policy :  policies) {
-       System.out.println("Policy Number: " + policy.getPolicyNumber());
-       System.out.println("Provider Name: " + policy.getProviderName());
-       System.out.println("Policyholder's Name: " + policy.getFirstName() + " " + policy.getLastName());
-       System.out.println("Policyholder's Age: " + policy.getAge());
-       System.out.println("Policyholder's Smoking Status: " + policy.getSmokingStatus());
-       System.out.println("Policyholder's Height: " + String.format("%.2f", policy.getHeight()) + " inches");
-       System.out.println("Policyholder's Weight: " + String.format("%.2f", policy.getWeight()) + " pounds");
-       System.out.println("Policyholder's BMI: " + String.format("%.2f", policy.calculateBMI()));
-       System.out.println("Policy Price: $" + String.format("%.2f", policy.calculateInsurancePrice()));
+       System.out.println(policy);
        System.out.println();
        
        }
        
        System.out.println("The number of policies with a smoker is: " + smokers);
        System.out.println("The number of policies with a non-smoker is: " + nonSmokers);
+       System.out.println("Number of Policy objects created: " + Policy.getNumberOfPolicies());
     }
 }
